@@ -3,11 +3,11 @@
 - [Microsoft.AspNet.WebApi.Owin](https://dotnet.microsoft.com/en-us/apps/aspnet/apis)
 - [Microsoft.AspNet.WebApi.OwinSelfHost](https://dotnet.microsoft.com/en-us/apps/aspnet/apis)
 - [NetMQ](https://netmq.readthedocs.io/en/latest/pub-sub/)
-# API 
+## API 
 - using RESTFul API to communicate with another application like (Node-red, web API, etc...)
 - Using These NuGet: Microsoft.AspNet.WebApi.Owin; Microsoft.Owin.Host.HttpListener; Microsoft.Owin.Hosting; Microsoft.AspNet.WebApi.OwinSelfHost
 
-# Define a selfhost server to listen API requests from clients
+### Define a selfhost server to listen API requests from clients
 ```csharp 
 
 // Define a self server host to lister request
@@ -18,7 +18,7 @@ server.OpenAsync().Wait();
 
 
 ```
-# Define a ResultAction to handle Post Request from client
+### Define a ResultAction to handle Post Request from client
 ```csharp
 public class OrderController:ApiController
 {
@@ -49,7 +49,7 @@ public class OrderInfor
     public string Quantity { get; set; }
 }
 ```
-# ZeroMQ
+## ZeroMQ
 - Using to subscribe and publish message through each node applications in local network
 - Using this NuGet: [NetMQ](https://netmq.readthedocs.io/en/latest/pub-sub/)
 ```csharp
@@ -110,10 +110,10 @@ public static void Initialize_Subcriber(string topic)
 }
 ```
 
-# Working with Database
+## Working with Database
 - Using DatabaseExcute_Main
 
-# Necessary User32.DLL for application
+## Necessary User32.DLL for application
 ```csharp
 #region User32 DLL
 
@@ -180,7 +180,7 @@ public static IntPtr FindChildWindow(IntPtr hwndParent, IntPtr hwndChildAfter, s
 }
 #endregion
 ```
-# Funtion to get coordinations of LOVEPOP Lazer software
+## Funtion to get coordinations of LOVEPOP Lazer software
 ```csharp
 private static void Reload_coordiante()
 {
@@ -287,7 +287,7 @@ static void Get_Coordinate_Settings()
 }
 ```
 
-# Move to Position option for instance
+## Move to Position option for instance
 ```csharp
 //Move to Red option then send click
 private static void Move_2_Red()
