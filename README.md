@@ -311,5 +311,6 @@ private static void Move_2_Tanso(string param)
  }
 ```
 # Reference
-[AutoIt Software](https://www.autoitscript.com/site/autoit/downloads/) use to find control to point to
-[Video-HowKteam](https://howkteam.vn/course/dieu-khien-ung-dung-pc-voi-c-50)
+- [AutoIt Software](https://www.autoitscript.com/site/autoit/downloads/) use to find control to point to
+  
+- [Video-HowKteam](https://howkteam.vn/course/dieu-khien-ung-dung-pc-voi-c-50)
