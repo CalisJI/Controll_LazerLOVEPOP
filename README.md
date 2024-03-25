@@ -74,24 +74,39 @@ public static void Initialize_Subcriber(string topic)
 }
 ```
 ```csharp
-//Publisher use in Plan option
-/// <summary>
-/// Publish message to subscribers in network (Workstation node)
-/// </summary>
-/// <param name="mQMessage"></param>
-public static async Task Publisher_MQ(MQMessage mQMessage) 
+//Subscriber --- use in sebcriber mode (Workstaion mode)
+
+public static CancellationTokenSource CancellationTokenSource = new CancellationTokenSource(); // use to cancel task 
+public static void Initialize_Subcriber(string topic)
 {
-    using (var publisher = new PublisherSocket())
+    Task.Run(() =>
     {
-        publisher.Bind("tcp://*:5556");
-        await Task.Delay(500);
-        if (mQMessage!=null && mQMessage.Topic!=null && mQMessage.Content!=null) 
+        using (var subscriber = new SubscriberSocket())
         {
-            publisher
-                .SendMoreFrame(mQMessage.Topic) // Topic
-                .SendFrame(mQMessage.Content); // Message 
+            subscriber.Connect("tcp://127.0.0.1:5556");
+            subscriber.Subscribe(topic);
+
+            while (!CancellationTokenSource.IsCancellationRequested) 
+            {
+                string v = subscriber.ReceiveFrameString();
+                var msg = subscriber.ReceiveFrameString();
+                Console.WriteLine("From Publisher: {0} {1}", topic, msg);
+                var content = msg.Split(':');
+                switch (content[0])
+                {
+                    case "open_lazer":
+                        Form1.OpenLazer();
+                        break;
+                    case "open_file_print":
+                        Form1.OpenCutingFile(content[1], content[2]);
+                        break;
+                    default:
+                        break;
+                }
+            }
+           
         }
-    }
+    }, CancellationTokenSource.Token);
 }
 ```
 
